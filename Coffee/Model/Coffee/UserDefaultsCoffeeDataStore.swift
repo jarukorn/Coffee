@@ -31,6 +31,7 @@
 /// THE SOFTWARE.
 
 import Foundation
+import Alamofire
 
 @MainActor
 class UserDefaultsCoffeeDataStore: CoffeeDataStore {
@@ -41,10 +42,35 @@ class UserDefaultsCoffeeDataStore: CoffeeDataStore {
 
   func fetchCoffee() async throws -> [Coffee] {
     guard let savedCoffeeData = UserDefaults.standard.object(forKey: "coffees") as? Data else {
-      return defaultCoffees
+      if let data = try? await afRequest(url: URL(string: "https://dl.dropboxusercontent.com/scl/fi/k16vgtomutfv1hyowpdk6/coffee.json?rlkey=zvbhtvnqkjjqmi2q4jp2031pa&dl=0")!) {
+        return toCoffees(data: data)
+      } else {
+        return defaultCoffees
+      }
     }
     let savedCoffees = try JSONDecoder().decode([Coffee].self, from: savedCoffeeData)
     return savedCoffees
+  }
+  
+  func toCoffees(data: Data) -> [Coffee] {
+    let coffees = try? JSONDecoder().decode([Coffee].self, from: data)
+    return coffees ?? []
+  }
+  
+  func afRequest(url:URL) async throws -> Data {
+      try await withUnsafeThrowingContinuation { continuation in
+          AF.request(url, method: .get).validate().responseData { response in
+              if let data = response.data {
+                  continuation.resume(returning: data)
+                  return
+              }
+              if let err = response.error {
+                  continuation.resume(throwing: err)
+                  return
+              }
+              fatalError("should not get here")
+          }
+      }
   }
 
   func saveCoffee(_ coffee: Coffee) async throws {
