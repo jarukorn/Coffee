@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0ABCCEF8293FEA26004441B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABCCEF7293FEA26004441B3 /* LaunchScreen.storyboard */; };
+		AA087DA42B27973500371D10 /* Alamofire.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA087DA32B27973500371D10 /* Alamofire.xcframework */; };
+		AA087DA52B27973500371D10 /* Alamofire.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AA087DA32B27973500371D10 /* Alamofire.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA087DAD2B27A85600371D10 /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = AA087DAC2B27A85600371D10 /* ci_post_clone.sh */; };
 		AE23BD0D28C478AF00392827 /* CoffeeEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23BD0C28C478AF00392827 /* CoffeeEditor.swift */; };
 		AE23BD0F28C4792600392827 /* UserDefaultsCoffeeDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE23BD0E28C4792600392827 /* UserDefaultsCoffeeDataStore.swift */; };
 		AE23BD1128C47F7F00392827 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AE23BD1028C47F7F00392827 /* Localizable.strings */; };
@@ -49,8 +52,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AA087DA62B27973500371D10 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AA087DA52B27973500371D10 /* Alamofire.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0ABCCEF7293FEA26004441B3 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AA087DA32B27973500371D10 /* Alamofire.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Alamofire.xcframework; path = Carthage/Build/Alamofire.xcframework; sourceTree = "<group>"; };
+		AA087DAC2B27A85600371D10 /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		AE23BD0C28C478AF00392827 /* CoffeeEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEditor.swift; sourceTree = "<group>"; };
 		AE23BD0E28C4792600392827 /* UserDefaultsCoffeeDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsCoffeeDataStore.swift; sourceTree = "<group>"; };
 		AE23BD1028C47F7F00392827 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -84,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA087DA42B27973500371D10 /* Alamofire.xcframework in Frameworks */,
 				AE7D553D28CD48430013DD60 /* CoffeeKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA087DAB2B27A85600371D10 /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				AA087DAC2B27A85600371D10 /* ci_post_clone.sh */,
+			);
+			path = ci_scripts;
+			sourceTree = "<group>";
+		};
 		AE47F15428D3F92200CB3F39 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +150,7 @@
 				AE4E564E28C313DE00CBF8BC /* Coffee */,
 				AE7D553828CD47850013DD60 /* CoffeeKit */,
 				AE4E566028C313DF00CBF8BC /* CoffeeTests */,
+				AA087DAB2B27A85600371D10 /* ci_scripts */,
 				AE4E566A28C313DF00CBF8BC /* CoffeeUITests */,
 				AE4E564D28C313DE00CBF8BC /* Products */,
 				AE7D553928CD48380013DD60 /* Frameworks */,
@@ -185,6 +214,7 @@
 		AE7D553928CD48380013DD60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA087DA32B27973500371D10 /* Alamofire.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,6 +269,7 @@
 				AE4E564828C313DE00CBF8BC /* Sources */,
 				AE4E564928C313DE00CBF8BC /* Frameworks */,
 				AE4E564A28C313DE00CBF8BC /* Resources */,
+				AA087DA62B27973500371D10 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +373,7 @@
 				AE4E565828C313DF00CBF8BC /* Preview Assets.xcassets in Resources */,
 				0ABCCEF8293FEA26004441B3 /* LaunchScreen.storyboard in Resources */,
 				AE23BD1128C47F7F00392827 /* Localizable.strings in Resources */,
+				AA087DAD2B27A85600371D10 /* ci_post_clone.sh in Resources */,
 				AE4E565428C313DF00CBF8BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
